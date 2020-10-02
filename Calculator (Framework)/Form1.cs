@@ -48,7 +48,7 @@ namespace Calculator__Framework_
                 term_input.Add(equation.Text);
                 show.Text += equation.Text;
                 show.Text += " " + button.Text;
-                op_input.Add(new @operator { input = char.Parse(button.Text), priority = Priority(char.Parse(button.Text)) });
+                op_input.Add(new @operator { input = char.Parse(button.Text), priority = @operator.Priority(char.Parse(button.Text)) });
 
                 equation.Clear();
             }
@@ -222,19 +222,6 @@ namespace Calculator__Framework_
         }
 
         //Method
-        public static int Priority(char op)
-        {
-            int priority = 0;
-            if (op == '*' || op == '/')
-                priority++;
-
-            if (op == '^')
-                priority += 2;
-
-            return priority;
-        }
-
-        //Method
         public int order_finder()
         {
             int indexer = 0;
@@ -275,6 +262,21 @@ namespace Calculator__Framework_
     {
         public char input { get; set; }
         public int priority { get; set; }
+
+
+        //Method
+        public static int Priority(char op)
+        {
+            int priority = 0;
+            if (op == '*' || op == '/')
+                priority++;
+
+            if (op == '^')
+                priority += 2;
+
+            return priority;
+        }
+
 
     }
 
